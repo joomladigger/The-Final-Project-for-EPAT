@@ -37,9 +37,9 @@ CFFEX = DataFrame(list(set(a1).difference(set(a2))),columns=['CCFX'])
 # access the contracts in SHFE but not in CFFEX
 SHFE = DataFrame(list(set(a2).difference(set(a1))),columns=['XSGE']) 
 # access the contracts in DCE but not in ZCE
-DCE = DataFrame(list(set(a3).difference(set(a4))),columns=['XDCE']) #大商所
+DCE = DataFrame(list(set(a3).difference(set(a4))),columns=['XDCE']) 
 # access the contracts in ZCE but not in ZCE
-ZCE = DataFrame(list(set(a4).difference(set(a3))),columns=['XZCE']) #郑商所
+ZCE = DataFrame(list(set(a4).difference(set(a3))),columns=['XZCE']) 
 s = pd.concat([aa1,aa3,aa2,aa4],axis=0)
 s.dropna()
 
