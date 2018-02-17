@@ -56,3 +56,7 @@ The # of Contracts in DCE： 16 There are： ['A', 'C', 'B', 'CS', 'BB', 'PP', '
 The # of Contracts in ZCE： 18 There are： ['MA', 'OI', 'RS', 'SR', 'CF', 'JR', 'WH', 'AP', 'CY', 'LR', 'PM', 'SM', 'FG', 'RM', 'TC', 'RI', 'SF', 'TA']
 Delete the repeated Contracts in CFFEX, the remaining： 48
 ```
+### 2. delete the contract with traded volumn less than 10000 
+```python
+
+````
