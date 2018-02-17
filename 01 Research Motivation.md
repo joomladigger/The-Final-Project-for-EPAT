@@ -19,6 +19,7 @@ Dalian Commodity Exchange (DCE) is a futures exchange approved by the State Coun
 Zhengzhou Commodity Exchange (ZCE) is the first pilot futures market approved by the State Council. At present, the listed products on ZCE include : wheat (Strong Gluten Wheat and Common Wheat), Early Long Grain Non-glutinous Rice, Japonica Rice, Cotton, Rapeseed, Rapeseed Oil, Rapeseed Meal, White Sugar, Steam Coal, Methanol, Pure Terephthalic Acid (PTA) and Flat Glass, form a comprehensive range of products covering several crucial areas of the national economy include agriculture, energy, chemical industry and construction materials.
 
 * Motivation of choosing this particular strategy domain
+
 My focuses on China’s future market is out of the following main reasons:
 
 To begin with, due to the not-shorting limitation of China’s stock markets, we only can long stocks, which makes it is impossible to do pair trading with stocks in China. Because when we do pair trading, we always long few stocks and short ones with high correlation.
