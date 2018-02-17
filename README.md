@@ -16,3 +16,14 @@ Shanghai Futures Exchange (SHFE) is organized under relevant rules and regulatio
 Dalian Commodity Exchange (DCE) is a futures exchange approved by the State Council and regulated by China Securities Regulatory Commission (CSRC). Over the years, through orderly operation and stable development, DCE has already become world’s largest agricultural futures market as well as the largest futures market for oils, plastics, coal, metallurgical coke, and iron ore. It is also an important futures trading center in China. By the end of 2017, a total of 16 futures contracts and 1 option contract have been listed for trading on DCE, which include No.1 soybean, soybean meal, corn, No.2 Soybean, soybean oil, linear low density polyethylene (LLDPE), RBD palm olein, polyvinyl chloride (PVC), metallurgical coke, coking coal, iron ore, egg, fiberboard, blockboard, polypropylene (PP), corn starch futures and soybean meal option.
  
 Zhengzhou Commodity Exchange (ZCE) is the first pilot futures market approved by the State Council. At present, the listed products on ZCE include : wheat (Strong Gluten Wheat and Common Wheat), Early Long Grain Non-glutinous Rice, Japonica Rice, Cotton, Rapeseed, Rapeseed Oil, Rapeseed Meal, White Sugar, Steam Coal, Methanol, Pure Terephthalic Acid (PTA) and Flat Glass, form a comprehensive range of products covering several crucial areas of the national economy include agriculture, energy, chemical industry and construction materials.
+
+#### * Motivation of choosing this particular strategy domain
+
+My focuses on China’s future market is out of the following main reasons:
+ 
+To begin with, due to the not-shorting limitation of China’s stock markets, we only can long stocks, which makes it is impossible to do pair trading with stocks in China. Because when we do pair trading, we always long few stocks and short ones with high correlation.
+ 
+What is more, there are very few algo trading firms/strategies that are operating in the China’s future exchange. I believe this should provide great opportunities, as there is little competition. Contrary to a more developed market, arbitrage opportunities aren’t readily realized which suggests there might be opportunities for those looking and able to take advantage of them.
+ 
+Last but not the least, UQER (https://uqer.io/) provides excellent APIs, through which I can access all daily main contract data from four future exchange of China. As we all know, high quality data plays a crucial role in algo trading. The accessibility of data is one of important factors We should consider when we are choosing markets and strategies. 
+
