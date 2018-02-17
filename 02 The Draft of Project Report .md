@@ -49,4 +49,15 @@ print 'The # of Contracts in DCE：',len(DCE),' ，','There are：',list(DCE['XD
 print 'The # of Contracts in ZCE：',len(ZCE),' ，','There are：',list(ZCE['XZCE'])
 print 'Delete the repeated Contracts in CFFEX, the remaining：' ,len(SHFE)+len(DCE)+len(ZCE)
 
+OUT:
+The # of Contracts in CFFEX：The # of Contracts in CFFEX： 5  ， There are： ['TF', 'IH', 'IC', 'T', 'IF']
+The # of Contracts in SHFE： 14  ， There are： ['NI', 'ZN', 'FU', 'AG', 'RU', 'AL', 'PB', 'BU', 'AU', 'SN', 'RB', 'HC', 'CU', 'WR']
+The # of Contracts in DCE： 16  ， There are： ['A', 'C', 'B', 'CS', 'BB', 'PP', 'I', 'J', 'M', 'L', 'JM', 'FB', 'JD', 'V', 'Y', 'P']
+The # of Contracts in ZCE： 18  ， There are： ['MA', 'OI', 'RS', 'SR', 'CF', 'JR', 'WH', 'AP', 'CY', 'LR', 'PM', 'SM', 'FG', 'RM', 'TC', 'RI', 'SF', 'TA']
+Delete the repeated Contracts in CFFEX, the remaining： 48
+ 5  ， There are： ['TF', 'IH', 'IC', 'T', 'IF']
+The # of Contracts in SHFE： 14  ， There are： ['NI', 'ZN', 'FU', 'AG', 'RU', 'AL', 'PB', 'BU', 'AU', 'SN', 'RB', 'HC', 'CU', 'WR']
+The # of Contracts in DCE： 16  ， There are： ['A', 'C', 'B', 'CS', 'BB', 'PP', 'I', 'J', 'M', 'L', 'JM', 'FB', 'JD', 'V', 'Y', 'P']
+The # of Contracts in ZCE： 18  ， There are： ['MA', 'OI', 'RS', 'SR', 'CF', 'JR', 'WH', 'AP', 'CY', 'LR', 'PM', 'SM', 'FG', 'RM', 'TC', 'RI', 'SF', 'TA']
+Delete the repeated Contracts in CFFEX, the remaining： 48
 ```
