@@ -1,4 +1,4 @@
-1. Research idea and motivation
+# 1. Research idea and motivation
 * The project topic: Statistical Arbitrage: Pair trading in China’s Futures Markets.
 Stocks cannot be shorted according to current China’s trading rules. Contrary to a more developed market, arbitrage opportunities are not readily realized which suggests there might be opportunities for those looking and able to take advantage of them. Therefore, I decided to focus on China’s futures market using Statistical Arbitrage and Pair trading techniques
 
