@@ -40,7 +40,7 @@ SHFE = DataFrame(list(set(a2).difference(set(a1))),columns=['XSGE'])
 DCE = DataFrame(list(set(a3).difference(set(a4))),columns=['XDCE']) 
 # access the contracts in ZCE but not in ZCE
 ZCE = DataFrame(list(set(a4).difference(set(a3))),columns=['XZCE']) 
-s = pd.concat([aa1,aa3,aa2,aa4],axis=0)
+s = pd.concat([CFFEX,SHFE,DCE,ZCE],axis=0)
 s.dropna()
 
 print 'The # of Contracts in CFFEX：',len(CFFEX),' ，','There are：',list(CFFEX['CCFX'])
