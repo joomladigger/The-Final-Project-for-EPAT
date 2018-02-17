@@ -56,7 +56,50 @@ The # of Contracts in DCE： 16 There are： ['A', 'C', 'B', 'CS', 'BB', 'PP', '
 The # of Contracts in ZCE： 18 There are： ['MA', 'OI', 'RS', 'SR', 'CF', 'JR', 'WH', 'AP', 'CY', 'LR', 'PM', 'SM', 'FG', 'RM', 'TC', 'RI', 'SF', 'TA']
 Delete the repeated Contracts in CFFEX, the remaining： 48
 ```
-### 2. delete the contract with traded volumn less than 10000 
+### 2. delete the contract with turnover volumn less than 10000 
 ```python
+data = DataAPI.MktMFutdGet(tradeDate='20171229',mainCon=1,contractMark=u"",contractObject=u"",startDate=u"",endDate=u"",field=[u"contractObject",u"exchangeCD",u"tradeDate",u"closePrice",u"turnoverVol"],pandas="1") 
+data = data[data.turnoverVol > 10000 ][data.exchangeCD != u'CCFX'] # not include Contracts from CCFEX
+print 'Main Contracts with Turnover Volumn more than 10000：' ,len(data),'there are:',list(data['contractObject'])
+data
+OUT：
+Main Contracts with Turnover Volumn more than 10000： 36 there are: ['A', 'AG', 'AL', 'AP', 'AU', 'BU', 'C', 'CF', 'CS', 'CU', 'FG', 'HC', 'I', 'J', 'JD', 'JM', 'L', 'M', 'MA', 'NI', 'OI', 'P', 'PB', 'PP', 'RB', 'RM', 'RU', 'SF', 'SM', 'SN', 'SR', 'TA', 'V', 'Y', 'TC', 'ZN']
 
+contractObject	exchangeCD	tradeDate	closePrice	turnoverVol
+0	A	XDCE	2017-12-29	3626.0	132704
+1	AG	XSGE	2017-12-29	3883.0	257368
+2	AL	XSGE	2017-12-29	15225.0	342742
+3	AP	XZCE	2017-12-29	8088.0	25762
+4	AU	XSGE	2017-12-29	277.8	70460
+7	BU	XSGE	2017-12-29	2622.0	223302
+8	C	XDCE	2017-12-29	1816.0	172514
+9	CF	XZCE	2017-12-29	14945.0	157698
+10	CS	XDCE	2017-12-29	2123.0	107298
+11	CU	XSGE	2017-12-29	55580.0	106148
+14	FG	XZCE	2017-12-29	1483.0	261232
+16	HC	XSGE	2017-12-29	3846.0	772990
+17	I	XDCE	2017-12-29	531.5	3406882
+21	J	XDCE	2017-12-29	1979.5	584372
+22	JD	XDCE	2017-12-29	3815.0	104930
+23	JM	XDCE	2017-12-29	1313.0	541822
+25	L	XDCE	2017-12-29	9800.0	302284
+27	M	XDCE	2017-12-29	2761.0	997662
+28	MA	XZCE	2017-12-29	2853.0	834060
+29	NI	XSGE	2017-12-29	96870.0	799816
+30	OI	XZCE	2017-12-29	6418.0	108138
+31	P	XDCE	2017-12-29	5226.0	235898
+32	PB	XSGE	2017-12-29	19170.0	45266
+34	PP	XDCE	2017-12-29	9285.0	357500
+35	RB	XSGE	2017-12-29	3794.0	4377144
+37	RM	XZCE	2017-12-29	2290.0	499556
+39	RU	XSGE	2017-12-29	14105.0	388104
+40	SF	XZCE	2017-12-29	6510.0	383334
+41	SM	XZCE	2017-12-29	7236.0	139486
+42	SN	XSGE	2017-12-29	144840.0	15210
+43	SR	XZCE	2017-12-29	5937.0	159692
+45	TA	XZCE	2017-12-29	5520.0	473548
+47	V	XDCE	2017-12-29	6655.0	352994
+50	Y	XDCE	2017-12-29	5668.0	284374
+51	TC	XZCE	2017-12-29	605.4	249790
+52	ZN	XSGE	2017-12-29	25725.0	289952
 ````
