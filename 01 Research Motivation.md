@@ -1,11 +1,11 @@
 # 1. Research idea and motivation
-* The project topic: Statistical Arbitrage: Pair trading in China’s Futures Markets.
+#### * The project topic: Statistical Arbitrage: Pair trading in China’s Futures Markets.
 Stocks cannot be shorted according to current China’s trading rules. Contrary to a more developed market, arbitrage opportunities are not readily realized which suggests there might be opportunities for those looking and able to take advantage of them. Therefore, I decided to focus on China’s futures market using Statistical Arbitrage and Pair trading techniques
 
-* The strategy idea
+#### * The strategy idea
 The trading strategy implemented in this project is called “Statistical Arbitrage Trading”, also known as “Pairs Trading” which is a contrarian strategy designed to profit from the mean-reverting behavior of a certain pair ratio. The assumption behind this strategy is that the spread from pairs that show properties of co-integration is mean reverting in nature and therefore will provide arbitrage opportunities if the spread deviates significantly from the mean.
 
-* Which data set will be used
+#### * Which data set will be used
 Data set will come from China Financial Futures Exchange (CFFEX)、Shanghai Futures Exchange (SHFE)、Dalian Commodity Exchange (DCE) and Zhengzhou Commodity Exchange(ZCE). All the daily data from the above four Exchanges will be accessed through UQER’s API (https://uqer.io/).
 
 The trading strategy will be back-tested for the period between 01/01/2008 and 31/12/2017. This period will be divided into an in-sample back-test, which will run between 01/01/2008 and 31/12/2015, and the remainder, which will be used for the out-of-sample backrest.
@@ -18,7 +18,7 @@ Dalian Commodity Exchange (DCE) is a futures exchange approved by the State Coun
 
 Zhengzhou Commodity Exchange (ZCE) is the first pilot futures market approved by the State Council. At present, the listed products on ZCE include : wheat (Strong Gluten Wheat and Common Wheat), Early Long Grain Non-glutinous Rice, Japonica Rice, Cotton, Rapeseed, Rapeseed Oil, Rapeseed Meal, White Sugar, Steam Coal, Methanol, Pure Terephthalic Acid (PTA) and Flat Glass, form a comprehensive range of products covering several crucial areas of the national economy include agriculture, energy, chemical industry and construction materials.
 
-* Motivation of choosing this particular strategy domain
+#### * Motivation of choosing this particular strategy domain
 
 My focuses on China’s future market is out of the following main reasons:
 
