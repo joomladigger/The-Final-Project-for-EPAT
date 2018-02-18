@@ -1,4 +1,5 @@
 ### Statistical Arbitrage Using the Kalman Filter
+#### Reference: http://jonathankinlay.com/2015/02/statistical-arbitrage-using-kalman-filter/
 #### * PROBLEM: The cointegration relationship are seldom static: they change quite frequently and often break down completely.
 We model the relationship between a pair of securities:  
 $\beta(t)  = \beta(t-1) + w $  
