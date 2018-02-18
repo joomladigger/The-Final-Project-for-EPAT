@@ -37,5 +37,12 @@ To get a handle on the problem, We have taken the following approach:
 
 ![Fig. 1 True and Estimated Beta and Alpha Using the Kalman Filter](Fig-12-211x300.png)
 
+As the noise ratio Q/R is small, the Kalman Filter estimates of the process alpha, kfalpha(t), correspond closely to the true alpha(t), which again are known to us in this experimental setting. 
+
+![Fig 2. Correlation between true alpha(t) and kfalpha(t) for values of Q and R](Fig-21-300x121.png)
+
+
+
+
 #### The take-away is this:  the Kalman Filter approach can be applied very successfully in developing statistical arbitrage strategies, but only for processes where the noise ratio is not too large.  One suggestion is to use a filter rule to supress trade signals generated at times when the noise ratio is too large, and/or to increase allocations to pairs in which the noise ratio is relatively low.
 
