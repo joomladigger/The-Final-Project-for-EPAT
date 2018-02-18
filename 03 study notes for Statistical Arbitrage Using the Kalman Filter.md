@@ -10,4 +10,4 @@ $ w $~ $N(0, Q) $ meaning $w$ is gaussian noise with zero mean and variance $Q$
 $ v $~ $N(0, R) $ meaning $v$ is gaussian noise with zero mean and variance $R$   
 
 What we are interested:
-$ \alpha(t) = Y(t) – Y*(t) = Y(t) –\ beta(t) X(t)
+$ \alpha(t) = Y(t) – Y^*(t) = Y(t) –\ beta(t) X(t)$
