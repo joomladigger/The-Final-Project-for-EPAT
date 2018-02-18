@@ -6,5 +6,5 @@ the unobserved state variable follows a random walk:
 $ Y(t) = \beta(t)X(t) + v$  
 where：  
 
-$ w ~ N(0, Q) $ meaning $w$ is gaussian noise with zero mean and variance Q 
-$ ~ N(0, R) $ meaning $v$ is gaussian noise with zero mean and variance R
+$ w \~ N(0, Q) $ meaning $w$ is gaussian noise with zero mean and variance $Q$   
+$ v \~ N(0, R) $ meaning $v$ is gaussian noise with zero mean and variance $R$  
