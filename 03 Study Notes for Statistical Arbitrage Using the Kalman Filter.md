@@ -33,3 +33,5 @@ To get a handle on the problem, We have taken the following approach:
 (v) Calculate the true, known $\alpha(t) = Y(t) – Y_{obs}(t)$
 
 (vi) Fit the Kalman Filter model to the simulated processes and estimate $\beta(t)$  and $Y_{est}(t)$. Hence produce estimates $kf_{\alpha}(t)  = Y_{obs}(t) – Y_{est}(t)$ and compare these with the known, true $\alpha(t)$.
+
+![Fig. 1 True and Estimated Beta and Alpha Using the Kalman Filter](Fig-12-211x300.png)
