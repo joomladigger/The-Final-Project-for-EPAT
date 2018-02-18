@@ -18,7 +18,7 @@ If the standardized alpha is large enough, the model suggests that the price $Y(
 
 The success of such a strategy depends critically on the quality of our estimates of $\alpha$, which in turn rest on the accuracy of our estimates of $\beta$. This depends on the noisiness of the beta process, i.e. its variance, $Q$.  If the $\beta$ process is very noisy, i.e. if $Q$ is large, our estimates of alpha are going to be too noisy to be useful as the basis for a reversion strategy.
 
-#### what would be an acceptable range for the beta process variance $Q% ?
+#### what would be an acceptable range for the beta process variance $Q$ ?
 
 To get a handle on the problem, We have taken the following approach:
 
@@ -32,4 +32,4 @@ To get a handle on the problem, We have taken the following approach:
 
 (v) Calculate the true, known $\alpha(t) = Y(t) – Y_{obs}(t)$
 
-(vi) Fit the Kalman Filter model to the simulated processes and estimate $\beta(t)$  and $Y_{est}(t). Hence produce estimates $kf_{\alpha}(t)  = Y_{obs}(t) – Y_{est}(t)$ and compare these with the known, true $\alpha(t)$.
+(vi) Fit the Kalman Filter model to the simulated processes and estimate $\beta(t)$  and $Y_{est}(t)$. Hence produce estimates $kf_{\alpha}(t)  = Y_{obs}(t) – Y_{est}(t)$ and compare these with the known, true $\alpha(t)$.
