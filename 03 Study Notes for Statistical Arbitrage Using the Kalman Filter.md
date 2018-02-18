@@ -15,3 +15,5 @@ $ \alpha(t) = Y(t) – Y^*(t) = Y(t) –\ beta(t) X(t)$
 As usual, we would standardize the alpha using an estimate of the alpha standard deviation, which is $\sqrt{R}$.  (Alternatively, you can estimate the standard deviation of the alpha directly, using a lookback period based on the alpha half-life).
 
 If the standardized alpha is large enough, the model suggests that the price $Y(t)$ is quoted significantly in excess of the true value.  Hence we would short stock $Y$ and buy stock $X$.  (In this context, where $X$ and $Y$ represent raw prices, you would hold an equal and opposite number of shares in $Y$ and $X$.If $X$ and $Y$ represented returns, you would hold equal and opposite market value in each stock).
+
+The success of such a strategy depends critically on the quality of our estimates of $\alpha$, which in turn rest on the accuracy of our estimates of $\beta$. This depends on the noisiness of the beta process, i.e. its variance, $Q$.  If the $\beta$ process is very noisy, i.e. if $Q$ is large, our estimates of alpha are going to be too noisy to be useful as the basis for a reversion strategy.
