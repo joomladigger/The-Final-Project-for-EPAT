@@ -35,3 +35,6 @@ To get a handle on the problem, We have taken the following approach:
 (vi) Fit the Kalman Filter model to the simulated processes and estimate $\beta(t)$  and $Y_{est}(t)$. Hence produce estimates $kf_{\alpha}(t)  = Y_{obs}(t) – Y_{est}(t)$ and compare these with the known, true $\alpha(t)$.
 
 ![Fig. 1 True and Estimated Beta and Alpha Using the Kalman Filter](Fig-12-211x300.png)
+
+#### The take-away is this:  the Kalman Filter approach can be applied very successfully in developing statistical arbitrage strategies, but only for processes where the noise ratio is not too large.  One suggestion is to use a filter rule to supress trade signals generated at times when the noise ratio is too large, and/or to increase allocations to pairs in which the noise ratio is relatively low.
+
