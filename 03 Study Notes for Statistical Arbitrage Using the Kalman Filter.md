@@ -11,7 +11,7 @@ $ w $~ $N(0, Q) $ meaning $w$ is gaussian noise with zero mean and variance $Q$
 $ v $~ $N(0, R) $ meaning $v$ is gaussian noise with zero mean and variance $R$   
 
 What we are interested:
-$ \alpha(t) = Y(t) – Y^*(t) = Y(t) –\ beta(t) X(t)$
+$ \alpha(t) = Y(t) – Y^*(t) = Y(t) –\beta(t) X(t)$
 
 As usual, we would standardize the alpha using an estimate of the alpha standard deviation, which is $\sqrt{R}$.  (Alternatively, you can estimate the standard deviation of the alpha directly, using a lookback period based on the alpha half-life).
 
