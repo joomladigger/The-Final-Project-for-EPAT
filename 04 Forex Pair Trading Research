@@ -1,0 +1,445 @@
+
+# coding: utf-8
+
+# ![QuantConnect Logo](https://cdn.quantconnect.com/web/i/logo-small.png)
+# ## Welcome to The QuantConnect Research Page
+# #### Refer to this page for documentation https://www.quantconnect.com/docs#Introduction-to-Jupyter
+# #### Contribute to this template file https://github.com/QuantConnect/Lean/blob/master/Jupyter/BasicQuantBookTemplate.ipynb
+
+# ## QuantBook Basics
+# 
+# ### Start QuantBook
+# - Add the references and imports
+# - Create a QuantBook instance
+
+# In[1]:
+
+
+get_ipython().magic(u'matplotlib inline')
+# Imports
+from clr import AddReference
+AddReference("System")
+AddReference("QuantConnect.Common")
+AddReference("QuantConnect.Jupyter")
+AddReference("QuantConnect.Indicators")
+from System import *
+from QuantConnect import *
+from QuantConnect.Data.Custom import *
+from QuantConnect.Data.Market import TradeBar, QuoteBar
+from QuantConnect.Jupyter import *
+from QuantConnect.Indicators import *
+from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Create an instance
+qb = QuantBook()
+
+
+# ### Selecting Asset Data
+# Checkout the QuantConnect [docs](https://www.quantconnect.com/docs#Initializing-Algorithms-Selecting-Asset-Data) to learn how to select asset data.
+
+# In[2]:
+
+
+# download the currency list from https://www.oanda.com/forex-trading/markets/live
+oanda = [u"AUDCAD",u"AUDCHF",u"AUDHKD",u"AUDJPY",u"AUDNZD",u"AUDSGD",u"AUDUSD",u"CADCHF",
+               u"CADHKD",u"CADJPY",u"CADSGD",u"CHFHKD",u"CHFJPY",u"CHFZAR",u"EURAUD",u"EURCAD",
+               u"EURCHF",u"EURCZK",u"EURDKK",u"EURGBP",u"EURHKD",u"EURHUF",u"EURJPY",u"EURNOK",
+               u"EURNZD",u"EURPLN",u"EURSEK",u"EURSGD",u"EURTRY",u"EURUSD",u"EURZAR",u"GBPAUD",
+               u"GBPCAD",u"GBPCHF",u"GBPHKD",u"GBPJPY",u"GBPNZD",u"GBPPLN",u"GBPSGD",u"GBPUSD",
+               u"GBPZAR",u"HKDJPY",u"NZDCAD",u"NZDCHF",u"NZDHKD",u"NZDJPY",u"NZDSGD",u"NZDUSD",
+               u"SGDCHF",u"SGDHKD",u"SGDJPY",u"TRYJPY",u"USDCAD",u"USDCHF",u"USDCNH",u"USDCZK",
+               u"USDDKK",u"USDHKD",u"USDHUF",u"USDINR",u"USDJPY",u"USDMXN",u"USDNOK",u"USDPLN",
+               u"USDSAR",u"USDSEK",u"USDSGD",u"USDTHB",u"USDTRY",u"USDZAR",u"ZARJPY"]
+
+oanda_usd = ["NZDUSD","CHFUSD","EURUSD","AUDHKD","SGDHKD","JPYUSD","HKDUSD","GDPUSD",
+             "CADUSD"]
+
+oanda_hkd = [u"NZDHKD",u"CHFHKD",u"EURHKD",u"JPYHKD",u"AUDHKD",u"SGDHKD",u"USDHKD",u"GDPHKD",
+             u"CADHKD"]
+oanda_jpy = [u'CADJPY',u'CHFJPY',u'GBPJPY',u'NZDJPY',u'TRYJPY',u'USDJPY',u'ZARJPY']
+
+lists = [u'AUDJPY',
+       u'CADJPY', u'CHFJPY', u'EURAUD', u'EURCAD', u'EURCHF', u'EURGBP',
+       u'EURJPY', u'EURNOK', u'EURNZD', u'EURSEK', u'EURTRY', u'EURUSD',
+       u'GBPAUD', u'GBPCAD', u'GBPCHF', u'GBPJPY', u'GBPNZD', u'GBPUSD',
+       u'NZDCAD', u'NZDCHF', u'NZDJPY', u'NZDUSD', u'TRYJPY', u'USDCAD',
+       u'USDCHF', u'USDCNH', u'USDJPY', u'USDMXN', u'USDNOK', u'USDSEK',
+       u'USDTRY', u'USDZAR', u'ZARJPY']
+
+
+# In[3]:
+
+
+oanda_jpy = []
+for l in lists:
+    if "JPY" in l:
+        oanda_jpy.append(l)
+print oanda_jpy
+
+
+# In[4]:
+
+
+# and all forex related to usd 
+market = QuantBook()
+market_usd = QuantBook()
+market_hkd = QuantBook()
+market_jpy = QuantBook()
+
+for forex in oanda:
+    market.AddForex(forex)
+
+for forex in oanda_usd:
+    market_usd.AddForex(forex)
+    
+for forex in oanda_hkd:
+    market_hkd.AddForex(forex)
+    
+for forex in oanda_jpy:
+    market_jpy.AddForex(forex)
+
+
+# In[36]:
+
+
+# down load history data
+# data = market.History(360, Resolution.Daily)
+# usd_d = market_usd.History(360, Resolution.Daily)
+# hkd_d = market_hkd.History(360, Resolution.Daily)
+jpy_d = market_jpy.History(1000, Resolution.Daily)
+
+# print data.shape
+# print usd_d.shape
+# print hkd_d.shape
+print jpy_d.shape
+
+
+# In[37]:
+
+
+print jpy_d.index.levels[0]
+print len(jpy_d.index.levels[0])
+
+
+# In[38]:
+
+
+jpy_d.head()
+
+
+# In[10]:
+
+
+(144.276 + 144.231) / 2  == 144.2535
+
+
+# In[39]:
+
+
+jpy_d_mkt = pd.DataFrame()
+for fx in oanda_jpy:
+    jpy_d_mkt[fx] = (jpy_d.loc[fx]['high'] + jpy_d.loc[fx]['low']) / 2.0
+
+
+# In[40]:
+
+
+jpy_d_mkt.head()
+
+
+# In[41]:
+
+
+import numpy as np
+import statsmodels.api as sm
+
+def find_cointegrated_pairs(dataframe, critial_level = 0.05): 
+    n = dataframe.shape[1] # the length of dateframe
+    pvalue_matrix = np.ones((n, n)) # initialize the matrix of p
+    keys = dataframe.keys() # get the column names
+    pairs = [] # initilize the list for cointegration
+    for i in range(n):
+        for j in range(i+1, n): # for j bigger than i
+            stock1 = dataframe[keys[i]] # obtain the price of two contract
+            stock2 = dataframe[keys[j]]
+            result = sm.tsa.stattools.coint(stock1, stock2) # get conintegration
+            pvalue = result[1] # get the pvalue
+            pvalue_matrix[i, j] = pvalue
+            if pvalue < critial_level: # if p-value less than the critical level 
+                pairs.append((keys[i], keys[j], pvalue)) # record the contract with that p-value
+    return pvalue_matrix, pairs
+
+
+# In[42]:
+
+
+pvalue_matrix, pairs = find_cointegrated_pairs(jpy_d_mkt,0.05)
+
+
+# In[48]:
+
+
+pairs
+
+
+# In[49]:
+
+
+jpy_d_mkt[["AUDJPY","CHFJPY"]].plot()
+
+
+# In[50]:
+
+
+jpy_d_mkt[["CADJPY","CHFJPY"]].plot()
+
+
+# ### Historical Data Requests
+# 
+# We can use the QuantConnect API to make Historical Data Requests. The data will be presented as multi-index pandas.DataFrame where the first index is the Symbol.
+# 
+# For more information, please follow the [link](https://www.quantconnect.com/docs#Historical-Data-Historical-Data-Requests).
+
+# In[33]:
+
+
+# Gets historical data from the subscribed assets, the last 360 datapoints with daily resolution
+h1 = qb.History(360, Resolution.Daily)
+
+
+# In[11]:
+
+
+h1.head()
+
+
+# In[17]:
+
+
+# Plot closing prices from "SPY" 
+h1.loc["SPY"][["low","high","open","close"]].plot()
+
+
+# In[ ]:
+
+
+# Gets historical data from the subscribed assets, from the last 30 days with daily resolution
+h2 = qb.History(timedelta(30), Resolution.Daily)
+
+
+# In[ ]:
+
+
+# Plot high prices from "EURUSD" 
+h2.loc["EURUSD"]["high"].plot()
+
+
+# In[ ]:
+
+
+# Gets historical data from the subscribed assets, between two dates with daily resolution
+h3 = qb.History(btc.Symbol, datetime(2014,1,1), datetime.now(), Resolution.Daily)
+
+
+# In[ ]:
+
+
+# Plot closing prices from "BTCUSD" 
+h3.loc["BTCUSD"]["close"].plot()
+
+
+# In[ ]:
+
+
+# Only fetchs historical data from a desired symbol
+h4 = qb.History(spy.Symbol, 360, Resolution.Daily)
+# or qb.History("SPY", 360, Resolution.Daily)
+
+
+# In[ ]:
+
+
+# Only fetchs historical data from a desired symbol
+# When we are not dealing with equity, we must use the generic method
+h5 = qb.History[QuoteBar](eur.Symbol, timedelta(30), Resolution.Daily)
+# or qb.History[QuoteBar]("EURUSD", timedelta(30), Resolution.Daily)
+
+
+# In[ ]:
+
+
+# Fetchs custom data
+# When we are not dealing with custom data, we must use the generic method
+h6 = qb.History[FxcmVolume](fxv.Symbol, timedelta(30))
+h6.loc[fxv.Symbol.Value]["Volume"].plot()
+
+
+# ### Historical Options Data Requests
+# - Select the option data
+# - Sets the filter, otherwise the default will be used SetFilter(-1, 1, timedelta(0), timedelta(35))
+# - Get the OptionHistory, an object that has information about the historical options data
+
+# In[ ]:
+
+
+goog = qb.AddOption("GOOG")
+goog.SetFilter(-2, 2, timedelta(0), timedelta(180))
+
+
+# In[ ]:
+
+
+option_history = qb.GetOptionHistory(goog.Symbol, datetime(2017, 1, 4))
+print option_history.GetStrikes()
+print option_history.GetExpiryDates()
+h7 = option_history.GetAllData()
+
+
+# ### Historical Future Data Requests
+# - Select the future data
+# - Sets the filter, otherwise the default will be used SetFilter(timedelta(0), timedelta(35))
+# - Get the FutureHistory, an object that has information about the historical future data
+
+# In[ ]:
+
+
+es = qb.AddFuture("ES")
+es.SetFilter(timedelta(0), timedelta(180))
+
+
+# In[ ]:
+
+
+future_history = qb.GetFutureHistory(es.Symbol, datetime(2017, 1, 4))
+print future_history.GetExpiryDates()
+h7 = future_history.GetAllData()
+
+
+# ### Get Fundamental Data
+# 
+# - *GetFundamental([symbol], selector, start_date = datetime(1998,1,1), end_date = datetime.now())*
+# 
+# We will get a pandas.DataFrame with fundamental data.
+
+# In[ ]:
+
+
+data = qb.GetFundamental(["AAPL","AIG","BAC","GOOG","IBM"], "ValuationRatios.PERatio")
+data
+
+
+# ### Indicators
+# 
+# We can easily get the indicator of a given symbol with QuantBook. 
+# 
+# For all indicators, please checkout QuantConnect Indicators [Reference Table](https://www.quantconnect.com/docs#Indicators-Reference-Table)
+
+# In[ ]:
+
+
+# Example with BB, it is a datapoint indicator
+# Define the indicator
+bb = BollingerBands(30, 2)
+
+# Gets historical data of indicator
+bbdf = qb.Indicator(bb, "SPY", 360, Resolution.Daily)
+
+# drop undesired fields
+bbdf = bbdf.drop('standarddeviation', 1)
+
+# Plot
+bbdf.plot()
+
+
+# In[ ]:
+
+
+# For EURUSD
+bbdf = qb.Indicator(bb, "EURUSD", 360, Resolution.Daily)
+bbdf = bbdf.drop('standarddeviation', 1)
+bbdf.plot()
+
+
+# In[ ]:
+
+
+# Example with ADX, it is a bar indicator
+adx = AverageDirectionalIndex("adx", 14)
+adxdf = qb.Indicator(adx, "SPY", 360, Resolution.Daily)
+adxdf.plot()
+
+
+# In[ ]:
+
+
+# For EURUSD
+adxdf = qb.Indicator(adx, "EURUSD", 360, Resolution.Daily)
+adxdf.plot()
+
+
+# In[ ]:
+
+
+# Example with ADO, it is a tradebar indicator (requires volume in its calculation)
+ado = AccumulationDistributionOscillator("ado", 5, 30)
+adodf = qb.Indicator(ado, "SPY", 360, Resolution.Daily)
+adodf.plot()
+
+
+# In[ ]:
+
+
+# For EURUSD. 
+# Uncomment to check that this SHOULD fail, since Forex is data type is not TradeBar.
+# adodf = qb.Indicator(ado, "EURUSD", 360, Resolution.Daily)
+# adodf.plot()
+
+
+# In[ ]:
+
+
+# SMA cross:
+symbol = "EURUSD"
+# Get History 
+hist = qb.History[QuoteBar](symbol, 500, Resolution.Daily)
+# Get the fast moving average
+fast = qb.Indicator(SimpleMovingAverage(50), symbol, 500, Resolution.Daily)
+# Get the fast moving average
+slow = qb.Indicator(SimpleMovingAverage(200), symbol, 500, Resolution.Daily)
+
+# Remove undesired columns and rename others 
+fast = fast.drop('rollingsum', 1).rename(columns={'simplemovingaverage': 'fast'})
+slow = slow.drop('rollingsum', 1).rename(columns={'simplemovingaverage': 'slow'})
+
+# Concatenate the information and plot 
+df = pd.concat([hist.loc[symbol]["close"], fast, slow], axis=1).dropna(axis=0)
+df.plot()
+
+
+# In[ ]:
+
+
+# Get indicator defining a lookback period in terms of timedelta
+ema1 = qb.Indicator(ExponentialMovingAverage(50), "SPY", timedelta(100), Resolution.Daily)
+# Get indicator defining a start and end date
+ema2 = qb.Indicator(ExponentialMovingAverage(50), "SPY", datetime(2016,1,1), datetime(2016,10,1), Resolution.Daily)
+
+ema = pd.concat([ema1, ema2], axis=1)
+ema.plot()
+
+
+# In[ ]:
+
+
+rsi = RelativeStrengthIndex(14)
+
+# Selects which field we want to use in our indicator (default is Field.Close)
+rsihi = qb.Indicator(rsi, "SPY", 360, Resolution.Daily, Field.High)
+rsilo = qb.Indicator(rsi, "SPY", 360, Resolution.Daily, Field.Low)
+rsihi = rsihi.rename(columns={'relativestrengthindex': 'high'})
+rsilo = rsilo.rename(columns={'relativestrengthindex': 'low'})
+rsi = pd.concat([rsihi['high'], rsilo['low']], axis=1)
+rsi.plot()
+
