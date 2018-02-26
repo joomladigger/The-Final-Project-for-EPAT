@@ -103,3 +103,23 @@ contractObject	exchangeCD	tradeDate	closePrice	turnoverVol
 51	TC	XZCE	2017-12-29	605.4	249790
 52	ZN	XSGE	2017-12-29	25725.0	289952
 ````
+### 3. find potential trading pairs
+Now that stocks have been filtered for their data and daily liquidity, every possible stock pair for each industry will be tested for cointegration. An ADF test will be performed such that, the alternative hypothesis is that the pairto be tested is stationary. The null hypothesis will be rejected for p-values < 0.05.
+
+'''python
+def find_cointegrated_pairs(dataframe, critial_level = 0.05): 
+    n = dataframe.shape[1] # the length of dateframe
+    pvalue_matrix = np.ones((n, n)) # initialize the matrix of p
+    keys = dataframe.keys() # get the column names
+    pairs = [] # initilize the list for cointegration
+    for i in range(n):
+        for j in range(i+1, n): # for j bigger than i
+            stock1 = dataframe[keys[i]] # obtain the price of two contract
+            stock2 = dataframe[keys[j]]
+            result = sm.tsa.stattools.coint(stock1, stock2) # get conintegration
+            pvalue = result[1] # get the pvalue
+            pvalue_matrix[i, j] = pvalue
+            if pvalue < critial_level: # if p-value less than the critical level 
+                pairs.append((keys[i], keys[j], pvalue)) # record the contract with that p-value
+    return pvalue_matrix, pairs
+'''
