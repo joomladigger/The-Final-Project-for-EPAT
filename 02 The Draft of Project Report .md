@@ -123,3 +123,63 @@ def find_cointegrated_pairs(dataframe, critial_level = 0.05):
                 pairs.append((keys[i], keys[j], pvalue)) # record the contract with that p-value
     return pvalue_matrix, pairs
 '''
+
+OUT；
+pairs
+Out[2]: 
+    S1  S2    Pvalue
+id                  
+1   SF  AL  0.000335
+2    J  ZN  0.000526
+3    J  SN  0.002573
+4    J  TC  0.002948
+5   RB  ZN  0.002989
+6    M  AG  0.005253
+7    L  TA  0.007005
+8   RU   I  0.008178
+9   HC   J  0.008756
+10  SN  JM  0.010518
+11  TA  JM  0.010526
+12  TA   J  0.013223
+13  TA  TC  0.013847
+14   L   V  0.014313
+15  TA  PP  0.015951
+16  SF  ZN  0.017772
+17  HC  TC  0.017905
+18  TA  ZN  0.018654
+19   J  FG  0.019662
+20  RB  AL  0.020002
+21  TA  SN  0.020563
+22  TA  FG  0.020883
+23   L  TC  0.021366
+24  TC  ZN  0.022593
+25  TC  FG  0.023459
+26   J  AL  0.023741
+27   J  PB  0.023798
+28   L  OI  0.023930
+29  MA  TA  0.024562
+30   L  JM  0.024794
+31   L   I  0.026373
+32  JM  FG  0.027714
+33  TA  PB  0.028486
+34  TA   I  0.029284
+35   L   J  0.029553
+36   L  SN  0.029921
+37  JM  PB  0.031826
+38  JM  TC  0.033815
+39   L  PP  0.034190
+40   L  RU  0.034852
+41  TA   V  0.035392
+42  TC   V  0.037755
+43  TC  CF  0.039094
+44  TA  AL  0.040062
+45  AG  RM  0.040686
+46  JM  CF  0.041476
+47  RB   J  0.042678
+48  RB  TC  0.042696
+49  SN  TC  0.046780
+50  OI   V  0.047545
+51  CU  SF  0.047547
+52  JM  ZN  0.047639
+53  TC  AL  0.048353
+54   L  FG  0.049270
