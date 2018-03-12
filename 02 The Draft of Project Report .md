@@ -106,7 +106,7 @@ contractObject	exchangeCD	tradeDate	closePrice	turnoverVol
 ### 3. find potential trading pairs
 Now that stocks have been filtered for their data and daily liquidity, every possible stock pair for each industry will be tested for cointegration. An ADF test will be performed such that, the alternative hypothesis is that the pairto be tested is stationary. The null hypothesis will be rejected for p-values < 0.05.
 
-'''python
+```python
 def find_cointegrated_pairs(dataframe, critial_level = 0.05): 
     n = dataframe.shape[1] # the length of dateframe
     pvalue_matrix = np.ones((n, n)) # initialize the matrix of p
