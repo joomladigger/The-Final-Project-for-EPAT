@@ -122,11 +122,10 @@ def find_cointegrated_pairs(dataframe, critial_level = 0.05):
             if pvalue < critial_level: # if p-value less than the critical level 
                 pairs.append((keys[i], keys[j], pvalue)) # record the contract with that p-value
     return pvalue_matrix, pairs
-'''
 
-OUT；
-pairs
-Out[2]: 
+find_cointegrated_pairs(data)
+print (pairs)
+OUT: 
     S1  S2    Pvalue
 id                  
 1   SF  AL  0.000335
@@ -183,3 +182,4 @@ id
 52  JM  ZN  0.047639
 53  TC  AL  0.048353
 54   L  FG  0.049270
+'''
